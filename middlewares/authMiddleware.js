@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import Prof from "../models/profmodel.js";
 
 // ✅ Middleware complet pour routes professeurs
-export const protect = async (req, res, next) => {
+ export const protect = async (req, res, next) => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {

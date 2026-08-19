@@ -79,7 +79,9 @@ export const login = async (req, res) => {
         success: true,
         prof: {
           id: prof._id,
-          email: prof.email
+          email: prof.email,
+          prenom: prof.prenom,
+          nom: prof.nom
           
         },
         token,

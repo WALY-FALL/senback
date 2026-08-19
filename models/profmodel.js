@@ -15,7 +15,7 @@ const profSchema = new mongoose.Schema( // format ou schéma d'un utilisateur de
     email: {
       type: String,
       required: true,
-      unique: true, // chaque client doit avoir un unique email
+      unique: true, // chaque prof doit avoir un unique email
       lowercase: true, //met tout en miniscule même si le client ecrit en majuscule
     },
     password: {
