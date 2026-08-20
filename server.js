@@ -67,7 +67,7 @@ const corsOptions = {
 app.use(cors(corsOptions));*/
 
 app.use(corsMiddleware);
-app.options("*", cors(corsOptions));
+//app.options("*", cors(corsOptions));
 
 
 app.use(express.json());
@@ -80,13 +80,27 @@ app.use(morgan("dev"));
 // SOCKET.IO
 // ============================
 
-const server = http.createServer(app);
+/*const server = http.createServer(app);
 
 
 const io = new Server(server,{
   cors:{
     origin:"http://localhost:3000",
     methods:["GET","POST"]
+  }
+});*/
+
+const server = http.createServer(app);
+
+const io = new Server(server, {
+  cors: {
+    origin: [
+      "http://localhost:3000",
+      "https://senecolevirtuelle.com",
+      "https://www.senecolevirtuelle.com"
+    ],
+    methods: ["GET", "POST"],
+    credentials: true
   }
 });
 
