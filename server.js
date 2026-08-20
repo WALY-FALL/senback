@@ -34,7 +34,8 @@ const app = express();
 //app.use(cors({origin:"http://localhost:3000"}));
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://senecolevirtuelle.com"
+  "https://senecolevirtuelle.com",
+  "https://www.senecolevirtuelle.com"
 ];
 
 app.use(cors({
