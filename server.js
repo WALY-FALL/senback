@@ -17,6 +17,7 @@ import devoirsRoutes from "./routes/devoirsRoutes.js";
 import demandeRoutes from "./routes/demandeRoutes.js";
 
 import liveCoursRoutes from "./routes/liveCoursRoutes.js";
+import corsMiddleware from "./middleware/cors.js";
 
 import connectDB from "./config/db.js";
 import "./config/cloudinary.js";
@@ -32,7 +33,7 @@ const app = express();
 
 //CORS
 
-const cors = require("cors");
+/*const cors = require("cors");
 
 const allowedOrigins = [
   "https://www.senecolevirtuelle.com",
@@ -63,8 +64,9 @@ const corsOptions = {
     "Authorization"
   ]
 };
+app.use(cors(corsOptions));*/
 
-app.use(cors(corsOptions));
+app.use(corsMiddleware);
 app.options("*", cors(corsOptions));
 
 
