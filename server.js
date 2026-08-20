@@ -32,7 +32,7 @@ const app = express();
 
 //CORS
 //app.use(cors({origin:"http://localhost:3000"}));
-const allowedOrigins = [
+/*const allowedOrigins = [
   "http://localhost:3000",
   "https://senecolevirtuelle.com",
   "https://www.senecolevirtuelle.com"
@@ -47,8 +47,42 @@ app.use(cors({
     }
   },
   credentials: true
-}));
+}));*/
+const cors = require("cors");
 
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://www.senecolevirtuelle.com",
+  "https://senecolevirtuelle.com"
+];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Autoriser les requêtes sans Origin
+    // (Postman, certains outils backend, etc.)
+    if (!origin) {
+      return callback(null, true);
+    }
+
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+
+    return callback(new Error("Origine non autorisée par CORS"));
+  },
+
+  credentials: true,
+
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+
+  allowedHeaders: [
+    "Content-Type",
+    "Authorization"
+  ]
+};
+
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 
 
 app.use(express.json());
