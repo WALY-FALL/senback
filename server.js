@@ -31,27 +31,10 @@ const app = express();
 // ============================
 
 //CORS
-//app.use(cors({origin:"http://localhost:3000"}));
-/*const allowedOrigins = [
-  "http://localhost:3000",
-  "https://senecolevirtuelle.com",
-  "https://www.senecolevirtuelle.com"
-];
 
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Origine non autorisée par CORS"));
-    }
-  },
-  credentials: true
-}));*/
 const cors = require("cors");
 
 const allowedOrigins = [
-  "http://localhost:3000",
   "https://www.senecolevirtuelle.com",
   "https://senecolevirtuelle.com"
 ];
